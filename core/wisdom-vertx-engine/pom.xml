@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.wisdom-framework</groupId>
         <artifactId>wisdom-framework</artifactId>
-        <version>0.10.0</version>
+        <version>0.10.0_la</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -93,7 +93,7 @@
         <dependency>
             <groupId>org.wisdom-framework</groupId>
             <artifactId>wisdom-executors</artifactId>
-            <version>0.10.0</version>
+            <version>0.10.0_la</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -202,7 +202,17 @@
                             com.google.common*;version=${guava.compile.version}.0,
                             com.hazelcast.*;resolution:=optional,
                             !io.vertx.codegen.annotations,
+                            org.slf4j;resolution:=optional,
+                            org.slf4j.helpers;resolution:=optional,
+                            org.slf4j.spi;resolution:=optional,
                             org.apache.log4j;resolution:=optional,
+                            org.apache.logging.log4j;resolution:=optional,
+                            org.apache.logging.log4j.message;resolution:=optional,
+                            org.apache.logging.log4j.spi;resolution:=optional,
+                            io.vertx.ext.healthchecks;resolution:=optional,
+                            io.netty.channel.epoll;resolution:=optional,
+                            io.netty.channel.kqueue;resolution:=optional,
+                            io.netty.channel.unix;resolution:=optional,
                             *
                         </Import-Package>
                         <Private-Package>

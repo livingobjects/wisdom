@@ -88,4 +88,10 @@ public class BoundedWriteStream implements WriteStream<Buffer> {
   public BoundedWriteStream exceptionHandler(Handler<Throwable> handler) {
     throw new UnsupportedOperationException("not implemented");
   }
+
+  @Override
+  public void end() {
+
+  }
+
 }

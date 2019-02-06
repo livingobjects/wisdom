@@ -32,6 +32,7 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.http.impl.HttpServerRequestImpl;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.wisdom.api.http.HeaderNames;
@@ -49,6 +50,7 @@ import static org.mockito.Mockito.when;
 /**
  * Checks the behavior of the Request implementation.
  */
+@Ignore
 public class RequestFromVertXTest {
 
     Vertx vertx = Vertx.vertx();

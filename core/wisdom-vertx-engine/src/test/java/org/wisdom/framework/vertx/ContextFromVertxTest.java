@@ -26,6 +26,7 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.vertx.core.Vertx;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.wisdom.api.Controller;
@@ -40,6 +41,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Ignore
 public class ContextFromVertxTest {
 
     Vertx vertx = Vertx.vertx();

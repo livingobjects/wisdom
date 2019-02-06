@@ -173,6 +173,11 @@ public class AsyncInputStream implements ReadStream<Buffer> {
         return this;
     }
 
+    @Override
+    public ReadStream<Buffer> fetch(long l) {
+        return this;
+    }
+
     /**
      * Set a data handler. As data is read, the handler will be called with the data.
      *

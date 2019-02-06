@@ -12,7 +12,7 @@
 
     <groupId>org.wisdom-framework</groupId>
     <artifactId>wisdom-framework</artifactId>
-    <version>0.10.0</version>
+    <version>0.10.0_la</version>
 
     <packaging>pom</packaging>
     <name>wisdom-framework-project</name>
@@ -49,16 +49,16 @@
         <commons.logging.version>1.1.3</commons.logging.version>
         <commons.lang.version>3.4</commons.lang.version>
 
-        <netty.version>4.0.31.Final</netty.version>
-        <vertx.version>3.1.0</vertx.version>
+        <netty.version>4.1.33.Final</netty.version>
+        <vertx.version>3.6.3</vertx.version>
         <hazelcast.version>3.5.2</hazelcast.version>
 
         <joda.version>2.8.2</joda.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>18.0</guava.version>
         <guava.compile.version>14.0</guava.compile.version>
         <hocon.version>1.3.0</hocon.version>
 
-        <jackson.version>2.6.2</jackson.version>
+        <jackson.version>2.9.8</jackson.version>
         <hibernateValidator.version>5.2.2.Final</hibernateValidator.version>
         <validation.api.version>1.1.0.Final</validation.api.version>
 
@@ -155,7 +155,7 @@
                 <module>framework/wisdom-runtime</module>
                 <module>framework/wisdom-bom</module>
                 <module>framework/integration-tests</module>
-                <module>framework/wisdom-maven-plugin-it</module>
+                <!--<module>framework/wisdom-maven-plugin-it</module>-->
             </modules>
         </profile>
         <profile>
@@ -458,6 +458,11 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-codec-http</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec-http2</artifactId>
                 <version>${netty.version}</version>
             </dependency>
             <dependency>
