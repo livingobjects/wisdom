@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,13 +19,27 @@
  */
 package org.wisdom.framework.vertx;
 
+import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
+import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
+import io.vertx.core.http.WebSocketFrame;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.SLF4JLogDelegateFactory;
+import io.vertx.core.spi.BufferFactory;
+import io.vertx.core.spi.FutureFactory;
+import io.vertx.core.spi.PumpFactory;
+import io.vertx.core.spi.VertxFactory;
+import io.vertx.core.spi.WebSocketFrameFactory;
+import io.vertx.core.streams.Pump;
 import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
-import org.apache.felix.ipojo.annotations.*;
+import org.apache.felix.ipojo.annotations.Component;
+import org.apache.felix.ipojo.annotations.Context;
+import org.apache.felix.ipojo.annotations.Instantiate;
+import org.apache.felix.ipojo.annotations.Invalidate;
+import org.apache.felix.ipojo.annotations.Requires;
+import org.apache.felix.ipojo.annotations.Validate;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.wisdom.api.configuration.ApplicationConfiguration;
@@ -90,6 +104,14 @@ public class VertxSingleton {
         final ClassLoader tccl = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+
+            // The next 5 lines are used to initialize static factories inside the OSGI class loader, otherwise it will fails outside.
+            // Once factory are initiliazed, it will works
+            VertxFactory vertxFactory = Vertx.factory;
+            BufferFactory bufferFactory = Buffer.factory;
+            PumpFactory pumpFactory = Pump.factory;
+            FutureFactory futureFactory = Future.factory;
+            WebSocketFrameFactory webSocketFrameFactory = WebSocketFrame.factory;
 
             Hashtable<String, Object> properties = new Hashtable<>();
             if (clustered) {
